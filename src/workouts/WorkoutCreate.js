@@ -13,7 +13,7 @@ const WorkoutCreate = (props) => {
             body: JSON.stringify({log: {description: description, definition: definition, result: result}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
         .then((logData) => {

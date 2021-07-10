@@ -7,15 +7,17 @@ const Login = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(username, password);
         fetch('http://localhost:3000/user/login', {
             method: 'POST',
-            body: JSON.stringify({user:{username: username, password: `Bearer ${password}`}}),
+            body: JSON.stringify({user:{username: username, password: password}}),
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
         }).then(
             (response) => response.json()
         ).then((data) => {
+            console.log(data);
             props.updateToken(data.sessionToken);
         })
     }
